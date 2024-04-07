@@ -28,7 +28,6 @@ score = 0
 clock = pygame.time.Clock()
 SPEED = 15
 
-
 # Функция для обновления направления змейки
 def change_direction(change_to, direction):
     if change_to == 'UP' and direction != 'DOWN':
@@ -41,13 +40,11 @@ def change_direction(change_to, direction):
         direction = 'RIGHT'
     return direction
 
-
 # Функция для отображения счета
 def show_score():
     font = pygame.font.SysFont(None, 35)
     score_surface = font.render('Счет : ' + str(score), True, (0, 0, 0))
     screen.blit(score_surface, (10, 10))
-
 
 # Игровой цикл
 while True:
@@ -85,7 +82,7 @@ while True:
         score += 1
         food_spawn = False
     else:
-        snake_body.pop()
+        snake_body.pop() # Этот блок удаляется только если змея не съела еду
 
     if not food_spawn:
         food_pos = [random.randrange(1, (SCREEN_WIDTH // 10)) * 10, random.randrange(1, (SCREEN_HEIGHT // 10)) * 10]
